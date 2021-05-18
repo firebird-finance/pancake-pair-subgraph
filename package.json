@@ -1,0 +1,25 @@
+{
+    "name": "pancake-pair-subgraph",
+    "version": "1.0.0",
+    "repository": "https://github.com/firebird-finance/pancake-pair-subgraph",
+    "license": "GPL-3.0-or-later",
+    "scripts": {
+        "codegen": "graph codegen --output-dir generated/",
+        "build": "graph build",
+        "create-bscgraph": "graph create firebird/pancake-pair --node https://api.bscgraph.org/deploy/",
+        "deploy:exchange-bscgraph": "graph deploy --ipfs https://ipfs.infura.io:5001/ --node https://api.bscgraph.org/deploy/ firebird/pancake-pair subgraph.yaml",
+        "create-local": "graph create firebird/pancake-pair --node http://127.0.0.1:8020",
+        "deploy-local": "graph deploy firebird/pancake-pair --debug --ipfs http://localhost:5001 --node http://127.0.0.1:8020",
+        "deploy": "graph deploy firebirdgraph/pancake-pair --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/ --debug"
+    },
+    "devDependencies": {
+        "@graphprotocol/graph-cli": "^0.20.0",
+        "@graphprotocol/graph-ts": "^0.20.0",
+        "@typescript-eslint/eslint-plugin": "^4.23.0",
+        "@typescript-eslint/parser": "^4.23.0",
+        "eslint": "^7.26.0",
+        "eslint-config-prettier": "^8.3.0",
+        "prettier": "^2.3.0",
+        "typescript": "^4.2.4"
+    }
+}

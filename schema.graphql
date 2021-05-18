@@ -1,0 +1,40 @@
+type PancakeFactory @entity {
+  id: ID!
+  totalPairs: BigInt!
+}
+type Token @entity {
+  id: ID!
+  "Name"
+  name: String!
+  "Symbol"
+  symbol: String!
+  "Decimals"
+  decimals: BigInt!
+  # derived prices
+  derivedBNB: BigDecimal
+  derivedUSD: BigDecimal
+  pairBase: [Pair!]! @derivedFrom(field: "token0")
+  pairQuote: [Pair!]! @derivedFrom(field: "token1")
+}
+type Pair @entity {
+  id: ID!
+  name: String!
+  # mirrored from the smart contract
+  token0: Token!
+  token1: Token!
+  reserve0: BigDecimal!
+  reserve1: BigDecimal!
+  totalSupply: BigDecimal!
+  # derived liquidity
+  reserveBNB: BigDecimal!
+  reserveUSD: BigDecimal!
+  trackedReserveBNB: BigDecimal! # used for separating per pair reserves and global
+  # Price in terms of the asset pair
+  token0Price: BigDecimal!
+  token1Price: BigDecimal!
+  block: BigInt!
+  timestamp: BigInt!
+}
+
+
+
